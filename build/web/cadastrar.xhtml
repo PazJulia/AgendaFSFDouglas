@@ -8,16 +8,28 @@
         <ui:define name="cad">
             <h:body>
                 
-                <div class="container" style="width: 60%;">
-                    
-                    <h:form>
+                <h:form>
+                    <div class="container" style="width: 40%; margin-top: 40px;">
+
+                        <div class="alert alert-success" role="alert" style="display:#{(cadastrar.alert)?'block':'none'}">
+                            #{cadastrar.mensagem}
+                        </div>
+
+                        <div class="form-group">
+                          <label>Nome</label>
+                          <h:inputText class="form-control" id="nome" value="#{cadastrar.nome}"></h:inputText>
+                        </div>
                         
-                        <!--https://www.youtube.com/watch?v=Xl2G-iieevw 12:00 -->
+                        <div class="form-group">
+                          <label>Telefone</label>
+                          <h:inputText class="form-control" id="telefone" value="#{cadastrar.telefone}"></h:inputText>
+                        </div>
                         
-                    </h:form>
-                    
-                </div>
-                
+                        <h:commandButton action="#{cadastrar.novocadastro()}" class="btn btn-success" value="  Salvar  "/>
+                        
+
+                    </div>
+                </h:form>
             </h:body>
         </ui:define>
         

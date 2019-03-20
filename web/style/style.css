@@ -1,0 +1,23 @@
+.dttbl-col1{
+    width: 180px;
+    margin: 1px;
+    padding: 1px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.dttbl-col2{
+    width: 120px;
+    margin: 1px;
+    padding: 1px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.dttbl-col3{
+    width: 130px;
+    margin: 1px;
+    padding: 1px;
+    font-weight: bold;
+    font-size: 12px;
+}

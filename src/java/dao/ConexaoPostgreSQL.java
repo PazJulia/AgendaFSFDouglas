@@ -1,9 +1,11 @@
 
 package dao;
 
+import dao.crud.ExecSQL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,7 +21,7 @@ public class ConexaoPostgreSQL {
 
         try {
             Class.forName("org.postgresql.Driver");
-            this.con = DriverManager.getConnection(url, usuario, senha);
+            this.con = DriverManager.getConnection(url, usuario, senha);  
             this.logCon = "conectado";
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ConexaoPostgreSQL.class.getName()).log(Level.SEVERE, null, ex);
@@ -44,5 +46,6 @@ public class ConexaoPostgreSQL {
     public String getLog(){
         return this.logCon;
     }
+    
     
 }

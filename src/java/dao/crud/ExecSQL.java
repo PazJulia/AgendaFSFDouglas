@@ -6,8 +6,12 @@
 package dao.crud;
 
 import dao.ConexaoPostgreSQL;
+import dao.model.Agenda;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,7 +23,7 @@ public class ExecSQL {
         this.con = new ConexaoPostgreSQL();
     }
     
-    public int executaSQL(String sql){
+    public int executaUpd(String sql){
         
         int res = -1;
         
@@ -38,6 +42,36 @@ public class ExecSQL {
         }
         
         return res;
+    }
+    
+    
+    
+    public List<Agenda> listaAgenda(){
+        
+        String sql = "select * from agenda_telefonica;";
+        ResultSet rs = null;
+        List<Agenda> lstAg = new ArrayList<>();
+        Statement st;
+        try {
+            st = this.con.getConnection().createStatement();
+            rs = st.executeQuery(sql);
+            this.con.getConnection().close();
+            this.con.close();
+            
+            while(rs.next()){
+                Agenda ag = new Agenda();
+                ag.setId(rs.getInt("id"));
+                ag.setNome(rs.getString("nome"));
+                ag.setTelefone(rs.getString("telefone"));
+                lstAg.add(ag);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ExecSQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return lstAg;
+        
     }
     
 }
