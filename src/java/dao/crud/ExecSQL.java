@@ -32,7 +32,6 @@ public class ExecSQL {
             try {
                 Statement stm = this.con.getConnection().createStatement();
                 res = stm.executeUpdate(sql);
-                this.con.getConnection().close();
                 this.con.close();
                 return res;
             } catch (SQLException ex) {
@@ -55,7 +54,6 @@ public class ExecSQL {
         try {
             st = this.con.getConnection().createStatement();
             rs = st.executeQuery(sql);
-            this.con.getConnection().close();
             this.con.close();
             
             while(rs.next()){
