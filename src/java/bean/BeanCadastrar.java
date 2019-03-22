@@ -11,6 +11,7 @@ public class BeanCadastrar {
     
     private int id;
     private String nome = "";
+    private String instituicao = "";
     private String telefone = "";
     private boolean alert = false;
     private boolean novo = true;
@@ -25,22 +26,24 @@ public class BeanCadastrar {
         ExecSQL novoCad = new ExecSQL();
         if(isNovo()){
             if(!this.nome.equals("") && !this.telefone.equals("")){
-                if(novoCad.executaUpd("insert into agenda_telefonica (nome, telefone) values ('"+this.nome+"', '"+this.telefone+"');") > 0){
+                if(novoCad.executaUpd("insert into agenda_telefonica (nome, instituicao, telefone) values ('"+this.nome+"', '"+this.instituicao+"', '"+this.telefone+"');") > 0){
                     this.setMensagem("Cadastro realizado com sucesso!");
                     this.setAlert(true);
                     this.nome = "";
-                    this.telefone = "";                   
+                    this.telefone = "";    
+                    this.instituicao = "";
                 } else {
                     this.setAlert(false);
                 }
             }
         } else {
             if(!this.nome.equals("") && !this.telefone.equals("")){
-                if(novoCad.executaUpd("update agenda_telefonica set nome = '"+this.nome+"', telefone = '"+this.telefone+"' where id = "+this.id+";") > 0){
+                if(novoCad.executaUpd("update agenda_telefonica set nome = '"+this.nome+"', instituicao = '"+this.instituicao+"', telefone = '"+this.telefone+"' where id = "+this.id+";") > 0){
                     this.setMensagem("Registro atualizado com sucesso!");
                     this.setAlert(true);
                     this.nome = "";
                     this.telefone = "";
+                    this.instituicao = "";
                     this.novo = true;
                 } else {
                     this.setAlert(false);
@@ -136,6 +139,20 @@ public class BeanCadastrar {
      */
     public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
+    }
+
+    /**
+     * @return the instituicao
+     */
+    public String getInstituicao() {
+        return instituicao;
+    }
+
+    /**
+     * @param instituicao the instituicao to set
+     */
+    public void setInstituicao(String instituicao) {
+        this.instituicao = instituicao;
     }
     
     

@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public class ConexaoPostgreSQL {
     
     private static final String database = "postgres";
-    private static final String usuario = "root";
+    private static final String usuario = "postgres";
     private static final String senha = "";
     private static final String url = "jdbc:postgresql://localhost:5432/";
     private static final String urlDB =  url + database;
@@ -21,6 +21,7 @@ public class ConexaoPostgreSQL {
                                               "("+
                                               "  id SERIAL PRIMARY KEY,"+
                                               "  nome text NOT NULL,"+
+                                              "  instituicao text NOT NULL,"+
                                               "  telefone text NOT NULL"+                                              
                                               ");";
 
